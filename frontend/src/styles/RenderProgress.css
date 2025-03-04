@@ -1,0 +1,32 @@
+.card {
+  background-color: #f5f5f5; /* Light background for cards */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.card-header {
+  background-color: #1976d2; /* Primary color for header */
+  color: white; /* White text color */
+}
+
+.progress-bar {
+  height: 10px; /* Height of the progress bar */
+}
+
+.table-header {
+  background-color: #e0e0e0; /* Light gray background for table header */
+}
+
+.table-cell {
+  padding: 16px; /* Padding for table cells */
+}
+
+.no-progress {
+  padding: 16px;
+  text-align: center; /* Centered text */
+}
+
+.no-tasks {
+  padding: 16px;
+  text-align: center; /* Centered text */
+}
