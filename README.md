@@ -114,7 +114,7 @@ Here are some of the key API endpoints available in this application:
 
 | Method | Endpoint                  | Description                       |
 |--------|---------------------------|-----------------------------------|
-| PORT    | api/user/register/    | for registration          |
+| POST    | api/user/register/    | for registration          |
 | POST   | api/token/            | for authorization  to get token          |
 | POST    | /api/token/refresh/   | for authorization to refresh token         |
 | GET    | /progress/             | To retreive all continous tasks          |
