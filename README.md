@@ -15,7 +15,9 @@
 
 ## Introduction
 
-This is a full-stack web application that allows users to manage their tasks efficiently. The frontend is built using React, providing a dynamic user interface, while the backend is powered by Django REST Framework, offering a robust API for data management.
+This is a full-stack web application that allows users to manage their tasks efficiently. 
+There are two types of tasks continous tasks and fixed tasks eg. solving two leetcode problems every l day 2 or two day etc is continous task and finish TaskManagement project start april 20 ,2025 and finish june 20,2025 etc is exapmle of fixed task
+The frontend is built using React, providing a dynamic user interface, while the backend is powered by Django REST Framework, offering a robust API for data management.
 
 ## Features
 
@@ -81,6 +83,7 @@ bash
    
 
 4. Set up the database:
+   create .env and replace information in env-example with True information
 
    
 bash
@@ -111,11 +114,18 @@ Here are some of the key API endpoints available in this application:
 
 | Method | Endpoint                  | Description                       |
 |--------|---------------------------|-----------------------------------|
-| GET    | /api/tasks/            | Retrieve all tasks                |
-| POST   | /api/tasks/            | Create a new task                 |
-| GET    | /api/tasks/{id}/       | Retrieve a specific task          |
-| PUT    | /api/tasks/{id}/       | Update a specific task            |
-| DELETE | /api/tasks/{id}/       | Delete a specific task            |
+| PORT    | api/user/register/    | for registration          |
+| POST   | api/token/            | for authorization  to get token          |
+| POST    | /api/token/refresh/   | for authorization to refresh token         |
+| GET    | /progress/             | To retreive all continous tasks          |
+| POST | /progress/               | To Create continous tasks           |
+| PATCH | /progress/              | To update  continous tasks         | note: data should contain id others optional
+| DELETE | /progress/?id={id}     | To Delete continous tasks         |
+| POST | /progress/stop/          | To stop/start continous tasks        | note: data contain only id and stop stop=True to stop and False to start
+| GET    | /fixed/             | To retreive all fixed tasks          |
+| POST | /progress/               | To Create fixed tasks           |
+| PATCH | /progress/              | To update  fixed tasks         | note: data should contain id others optional
+| DELETE | /progress/?id={id}     | To Delete continous tasks         |
 
 ## Contributing
 
