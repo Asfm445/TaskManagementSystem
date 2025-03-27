@@ -15,33 +15,6 @@ function Form(props) {
       [e.target.name]: e.target.value, // Use square brackets here
     }));
   }
-  // async function handleSubmit(e) {
-  //   setLoading(true);
-  //   e.preventDefault();
-  //   try {
-  //     let response = await handleForm(props.apiUrl, "POST", props.inputs);
-  //     const data = await response.json();
-  //     if (response.ok) {
-  //       if (props.type == "Login") {
-  //         localStorage.setItem("access_token", JSON.stringify(data.access));
-  //         localStorage.setItem("refresh_token", JSON.stringify(data.refresh));
-  //         navigate("/");
-  //       } else {
-  //         navigate("/login");
-  //       }
-  //     } else {
-  //       if (props.type === "Login") {
-  //         setError(data.detail);
-  //       } else {
-  //         setError(data.username);
-  //       }
-  //     }
-  //   } catch (error) {
-  //     alert(error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }
   async function handleSubmit(e) {
     setLoading(true);
     e.preventDefault();

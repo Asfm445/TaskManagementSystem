@@ -24,7 +24,9 @@ class ContinousTask(models.Model):
 
 class stopProgress(models.Model):
     stopped_at = models.DateTimeField(auto_now_add=True)
-    task_id = models.IntegerField()
+    task = models.ForeignKey(
+        ContinousTask, on_delete=models.CASCADE, related_name="stop_task"
+    )
 
 
 class progressDates(models.Model):

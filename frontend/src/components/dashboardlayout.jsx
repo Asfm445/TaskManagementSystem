@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   AppBar,
   Box,
@@ -27,7 +27,14 @@ const DashboardLayout = (props) => {
   // Check if the screen size is large
   const isLargeScreen = useMediaQuery((theme) => theme.breakpoints.up("md"));
   const isMediumScreen=useMediaQuery((theme)=>theme.breakpoints.between("sm","md"))
-  const [isCollapsed, setIsCollapsed] = useState(isMediumScreen);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  useEffect(()=>{
+    if (isMediumScreen){
+    setIsCollapsed(true)
+  }else if (isLargeScreen){
+    setIsCollapsed(false)
+  }
+  },[isMediumScreen,isLargeScreen])
 
   const handleDrawerToggle = () => {
     if (isLargeScreen || isMediumScreen) {

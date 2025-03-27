@@ -163,6 +163,7 @@ class stopAndStartProgress(APIView):
     def post(self, request):
         today = datetime.now(timezone.utc)
         data = request.data
+        print(data)
         if "task_id" in data and "stop" in data:
             try:
                 task = ContinousTask.objects.get(id=data["task_id"], owner=request.user)
@@ -173,13 +174,17 @@ class stopAndStartProgress(APIView):
                 )
             if data["stop"]:
                 task.stop = True
+                if stopProgress.objects.filter(task=task).exists():
+                    stopped_progress = stopProgress.objects.get(task_id=data["task_id"])
+                    stopped_progress.created_at = datetime.now(timezone.utc)
+                    return Response(status=status.HTTP_202_ACCEPTED)
                 stopped_progress = stopProgress(task_id=data["task_id"])
                 stopped_progress.save()
                 task.save()
                 return Response(status=status.HTTP_202_ACCEPTED)
             try:
                 stopped_progress = stopProgress.objects.get(task_id=task.id)
-            except Exception:
+            except Exception as e:
                 return Response(
                     {"message": "the task did not stopped"}, status=status.HTTP_200_OK
                 )

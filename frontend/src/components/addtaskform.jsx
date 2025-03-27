@@ -58,8 +58,19 @@ function TaskForm(props) {
     });
     if (!props.isContinuous) {
       if (!valid.endDate && !valid.startingDate && !valid.task) {
+        let startingDate = new Date(
+          `${inputs.startingDate}T${inputs.startingTime}:00`
+        );
+        let endDate=new Date(
+          `${inputs.endDate}T${inputs.startingTime}:00`
+        );
+        let ob = {
+          ["task"]: inputs.task,
+          ["startingDate"]: startingDate.toISOString(),
+          ["endDate"]: endDate.toISOString(),
+        };
         send({
-          inputs: inputs,
+          inputs: ob,
           setFetch: props.setFetch,
           fetch: props.fetch,
           route: "fixed/",
@@ -175,6 +186,7 @@ function TaskForm(props) {
               <input
                 type="time"
                 name="endTime"
+                value={inputs.endTime}
                 className="input-field"
                 onChange={(e) => {
                   setInputs((prev) => ({

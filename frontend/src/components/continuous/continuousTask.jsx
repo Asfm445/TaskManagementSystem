@@ -1,6 +1,7 @@
 import { Button, Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import api from "../../api";
+import { useNavigate } from "react-router-dom";
 const today = new Date();
 import {
   calculateRemainingTime,
@@ -13,6 +14,7 @@ function TaskRender(props) {
   const [stop, setStop] = useState(e.stop);
   const [remainingTime, setRemainingTime] = useState(calculateRemainingTime(e));
   const [update, setUpdate] = useState(false);
+  const navigate=useNavigate()
   useEffect(() => {
     // Update remaining time every minute
     const interval = setInterval(() => {
@@ -96,8 +98,12 @@ function TaskRender(props) {
           onClick={() => {
             api
               .patch("progress/", { id: e.id, completed: true })
-              .then(() => {
-                setFinish(true);
+              .then((res) => {
+                if(res.status==201){
+                   setFinish(true);
+                }else if(res.status==401){
+                  navigate('/login')
+                }
               })
               .catch((err) => alert(err));
           }}
@@ -113,12 +119,17 @@ function TaskRender(props) {
           onClick={() => {
             api
               .post("progress/stop/", { task_id: e.id, stop: false })
-              .then(() => {
-                setStop(false);
-                sete((prev) => ({
-                  ...prev,
-                  stop: false,
-                }));
+              .then((res) => {
+                console.log(res)
+                if(res.status==200){
+                  setStop(false);
+                  sete((prev) => ({
+                    ...prev,
+                    stop: false,
+                  }));
+                }else if(res.status==401){
+                  navigate("/login")
+                }
               })
               .catch((err) => alert(err));
           }}

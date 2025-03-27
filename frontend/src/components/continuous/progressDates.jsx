@@ -79,7 +79,7 @@ function RenderProgress() {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {taskItem.progressDates.map((progress) => (
+                      {taskItem.progressDates.reverse().map((progress) => (
                         <TableRow key={progress.id}>
                           <TableCell className="table-cell">
                             {format(
@@ -94,7 +94,8 @@ function RenderProgress() {
                             )}
                           </TableCell>
                           <TableCell className="table-cell">
-                            {progress.isDone ? (
+                            {progress.isStopped?<Typography>was stopped</Typography>:
+                            progress.isDone ? (
                               <AssignmentTurnedInRoundedIcon
                                 sx={{ color: "green" }}
                               />
