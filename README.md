@@ -36,7 +36,7 @@ The frontend is built using React, providing a dynamic user interface, while the
 - **Backend:**
   - Django
   - Django REST Framework
-  - PostgreSQL (or SQLite for development)
+  - PostgreSQL
   - JWT (for authentication)
 
 ## Installation
