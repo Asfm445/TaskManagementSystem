@@ -13,11 +13,10 @@
 - [Contributing](#contributing)
 - [License](#license)
 
-## Introduction
+## Introduction  
 
-This is a full-stack web application that allows users to manage their tasks efficiently. 
-There are two types of tasks continous tasks and fixed tasks eg. solving two leetcode problems every l day 2 or two day etc is continous task and finish TaskManagement project start april 20 ,2025 and finish june 20,2025 etc is exapmle of fixed task
-The frontend is built using React, providing a dynamic user interface, while the backend is powered by Django REST Framework, offering a rest API for data management.
+This is a full-stack task management application designed to handle both **continuous** (recurring) and **fixed** (time-bound) tasks. Users can create tasks like "Solve 2 LeetCode problems every 2 days" (continuous) or "Finish Project X from April 20 to June 20, 2025" (fixed). The frontend, built with React, provides an interactive interface, while the Django REST Framework backend serves a robust API for task operations.
+
 
 ## Features
 
